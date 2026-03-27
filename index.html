@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>LogeshWaran M — Portfolio</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:system-ui,sans-serif;background:#fff;color:#111;max-width:680px;margin:60px auto;padding:0 24px;line-height:1.6}
+  h1{font-size:2rem;font-weight:700;margin-bottom:4px}
+  .sub{color:#666;font-size:.95rem;margin-bottom:32px}
+  h2{font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:#999;margin:36px 0 12px;padding-bottom:6px;border-bottom:1px solid #eee}
+  p{color:#444;font-size:.92rem}
+  .tags{display:flex;flex-wrap:wrap;gap:8px}
+  .tag{background:#f3f3f3;color:#333;font-size:.78rem;padding:4px 10px;border-radius:4px}
+  #repos{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .repo{border:1px solid #e8e8e8;border-radius:6px;padding:14px;text-decoration:none;color:inherit;display:block}
+  .repo:hover{border-color:#bbb}
+  .repo-name{font-weight:600;font-size:.88rem;margin-bottom:4px}
+  .repo-desc{font-size:.78rem;color:#666;margin-bottom:8px}
+  .repo-lang{font-size:.72rem;color:#888}
+  .links{display:flex;gap:16px;flex-wrap:wrap}
+  .links a{color:#111;font-size:.88rem;text-decoration:none;border-bottom:1px solid #ddd;padding-bottom:1px}
+  .links a:hover{border-color:#111}
+  footer{margin-top:60px;padding-top:20px;border-top:1px solid #eee;font-size:.78rem;color:#aaa}
+  @media(max-width:500px){#repos{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<h1>Logeshwaran M</h1>
+<p class="sub">Data and Analytics Engineer</p>
+
+<h2>About</h2>
+<p>Data and Analytics Engineer with 4+ years of hands-on experience designing and implementing efficient, scalable data solutions that bridge analytics, engineering, and user experience. I specialize in Power BI, Talend, SQL, Python, Snowflake, AWS Glue, PySpark, Apache Airflow, and Databricks, with strong expertise in query optimization and BI development.
+
+I have built robust ETL pipelines, optimized large-scale datasets, and developed AI-powered assistants that transform natural language into actionable insights—enabling faster, data-driven decision-making across domains. Additionally, I’ve created intelligent Python-based chatbots that integrate with multiple databases and deliver seamless analytical insights.</p>
+
+<h2>Skills</h2>
+<div class="tags">
+  <span class="tag">AI</span><span class="tag">LLM</span><span class="tag">RAG</span><span class="tag">dotnet</span>
+  <span class="tag">Python</span><span class="tag">Talend</span><span class="tag">Power BI</span>
+  <span class="tag">Snowflake</span><span class="tag">AWS Glue</span><span class="tag">Node.js</span>
+  <span class="tag">PySpark</span><span class="tag">Databricks</span><span class="tag">Airflow Apache</span>
+  <span class="tag">SQL</span><span class="tag">DBT</span><span class="tag">File Systems</span>
+</div>
+
+<h2>GitHub Repositories</h2>
+<div id="repos"><p style="color:#aaa;font-size:.85rem">Loading…</p></div>
+<!-- <h2>Achivements</h2>
+<div id="certs"><p style="color:#aaa;font-size:.85rem">Loading…</p></div> -->
+
+
+<h2>Contact</h2>
+<div class="links">
+  <!-- <a href="https://github.com/talendgi" target="_blank">GitHub</a> -->
+  <!-- <a href="www.linkedin.com/in/logesh-waran-m-5b9676392" >LinkedIn</a> -->
+  <!-- <a href="logeshm5090@gmail.com">Email</a> -->
+  <p><b>LinkedIn : </b>www.linkedin.com/in/logesh-waran-m-5b9676392 <br>
+    <b>Email : </b>logeshm5090@gmail.com <br>
+  <b>Phone : </b>8148511398</p>
+  <!-- <a href="#">Resume</a> -->
+</div>
+
+<footer>© 2026 Logeshwaran M</footer>
+
+<script>
+  const GITHUB_USER = 'talendgi'; 
+  const SHOW_REPOS = ['Multi-database-BI-agent', 'snflkBIagent', 'Samplechat.net','aws_glue','text2Mysql-chatbot','Samplechat.net'];
+  fetch(`https://api.github.com/users/${GITHUB_USER}/repos?sort=name&per_page=100`)
+    .then(r => r.json())
+    .then(repos => {
+      const filtered = repos.filter(r => SHOW_REPOS.includes(r.name));
+      document.getElementById('repos').innerHTML = filtered.map(r => `
+        <a class="repo" href="${r.html_url}" target="_blank">
+          <div class="repo-name">${r.name}</div>
+          <div class="repo-desc">${r.description || `Created to maintain ${r.name} files`}</div>
+          <div class="repo-lang">${r.language || ''} · ★ ${r.stargazers_count}</div>
+        </a>`).join('');
+    })
+    .catch(() => {
+      document.getElementById('repos').innerHTML = '<p style="color:#aaa;font-size:.85rem">Could not load repositories.</p>';
+    });
+</script>
+<!-- <script>
+  const GITHUB_USER_C = 'talendgi'; 
+  const SHOW_REPOS_C = ['Multi-database-BI-agent', 'snflkBIagent', 'Samplechat.net','aws_glue','text2Mysql-chatbot','dags'];
+  fetch(`https://api.github.com/users/${GITHUB_USER}/repos?sort=name&per_page=100`)
+    .then(r => r.json())
+    .then(certs => {
+      const filtered = repos.filter(r => SHOW_REPOS.includes(r.name));
+      document.getElementById('certs').innerHTML = repos.map(r => `
+        <a class="repo" href="${r.html_url}" target="_blank">
+          <div class="repo-name">${r.name}</div>
+          <div class="repo-desc">${r.description || '—'}</div>
+          <div class="repo-lang">${r.language || ''} · ★ ${r.stargazers_count}</div>
+        </a>`).join('');
+    })
+    .catch(() => {
+      document.getElementById('certs').innerHTML = '<p style="color:#aaa;font-size:.85rem">Could not load repositories.</p>';
+    });
+</script> -->
+</body>
+</html>
